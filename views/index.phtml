@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="main-container">
+    <div id="messages-container">
+        <?php foreach($arrData as $message) { ?>
+            <div data-id="<?= $message['id'] ?>" class="message"><?= $message['text'] ?></div>
+        <?php } ?>
+    </div>
+    <textarea id="send-message-input" cols="30" rows="10"></textarea>
+    <button id="send-message-button" onclick="sendMessage()">Send</button>
+</div>
+
+<?php if(DEBUG) { ?>
+<div id="error-log">
+    <pre><?= $arrErr ?></pre>
+</div>
+<?php
+echo '<pre>';
+print_r($arrData);
+echo '</pre>';
+?>
+<?php } ?>
+<script src="js/jquery.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
