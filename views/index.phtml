@@ -3,31 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Testing</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-
-<div class="main-container">
-    <div id="messages-container">
-        <?php foreach($arrData as $message) { ?>
-            <div data-id="<?= $message['id'] ?>" class="message"><?= $message['text'] ?></div>
-        <?php } ?>
+<div class="container">
+    <header><h1>Messenger</h1></header>
+    <div class="row">
+        <div id="messages-container col-md-12" style="position: relative; overflow: scroll; height: 400px">
+            <div class="messages" style="position: relative; bottom: 0">
+                <?php foreach ($arrData as $message) { ?>
+                    <div data-id="<?= $message['id'] ?>" class="message panel panel-default">
+                        <div class="panel-heading"><span><?= $message['author'] ?></span><span
+                                class="pull-right"><?= $message['timestamp'] ?></span></div>
+                        <div class="panel-body"><?= $message['text'] ?></div>
+                        <!--                    <div class="panel-footer">--><!--</div>-->
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
     </div>
-    <textarea id="send-message-input" cols="30" rows="10"></textarea>
-    <button id="send-message-button" onclick="sendMessage()">Send</button>
+
+    <div class="reply">
+        <div class="row">
+            <div class="col-md-12">
+                <input class="form-control send-message-author" id="send-message-author-input" placeholder="Введите имя" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <textarea class="form-control send-message" id="send-message-input" placeholder="Введите сообщение"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-default form-control" id="send-message-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <?php if (DEBUG) { ?>
+            <div id="error-log">
+                <pre><?= $arrErr ?></pre>
+            </div>
+            <?php
+            echo '<pre>';
+            print_r($arrData);
+            echo '</pre>';
+            ?>
+        <?php } ?>
+    </footer>
 </div>
 
-<?php if(DEBUG) { ?>
-<div id="error-log">
-    <pre><?= $arrErr ?></pre>
-</div>
-<?php
-echo '<pre>';
-print_r($arrData);
-echo '</pre>';
-?>
-<?php } ?>
 <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

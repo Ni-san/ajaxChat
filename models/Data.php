@@ -30,7 +30,7 @@ class Data
      * @throws DbException
      */
     public function getMessages() {
-        $result = $this->mysqli->query("SELECT * FROM test ORDER BY id ASC");
+        $result = $this->mysqli->query("SELECT * FROM test ORDER BY id DESC");
         if(!$result) {
             throw new DbException('Не удалось получить сообщения');
         }

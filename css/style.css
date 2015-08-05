@@ -1,6 +1,8 @@
-pre {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+textarea.send-message {
+    max-width: 100%;
+    min-height: 120px;
+}
+
+.reply div {
+    margin: 3px;
 }
