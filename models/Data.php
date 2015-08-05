@@ -31,7 +31,7 @@ class Data
      */
     public function getMessages() {
         $result = $this->mysqli->query("SELECT * FROM test ORDER BY id DESC");
-        if(!$result) {
+        if (!$result) {
             throw new DbException('Не удалось получить сообщения');
         }
         $ret = [];
@@ -48,14 +48,14 @@ class Data
      */
     public function getMessagesAfter($id) {
         $result = $this->mysqli->query("SELECT * FROM test WHERE `id`>" . (int)$id . " ORDER BY id DESC");
-        if(!$result) {
+        if (!$result) {
             throw new DbException('Не удалось получить новые сообщения');
         }
         $ret = [];
         while ($row = $result->fetch_assoc()) {
             $ret[] = $row;
         }
-        if(count($ret) === 0) {
+        if (count($ret) === 0) {
             return false;
         }
         return $ret;
@@ -68,7 +68,7 @@ class Data
      */
     public function addMessage($text, $author) {
         $result = $this->mysqli->query("INSERT INTO `test`(`text`,`author`) VALUES ('" . $text . "', '" . $author . "')");
-        if(!$result) {
+        if (!$result) {
             throw new DbException('Не удалось добавить сообщение');
         }
     }

@@ -14,8 +14,10 @@
             <div class="messages" style="position: relative; bottom: 0">
                 <?php foreach ($arrData as $message) { ?>
                     <div data-id="<?= $message['id'] ?>" class="message panel panel-default">
-                        <div class="panel-heading"><span><?= $message['author'] ?></span><span
-                                class="pull-right"><?= $message['timestamp'] ?></span></div>
+                        <div class="panel-heading">
+                            <span><?= $message['author'] ?></span>
+                            <span class="pull-right"><?= $message['timestamp'] ?></span>
+                        </div>
                         <div class="panel-body"><?= $message['text'] ?></div>
                         <!--                    <div class="panel-footer">--><!--</div>-->
                     </div>
@@ -27,7 +29,7 @@
     <div class="reply">
         <div class="row">
             <div class="col-md-12">
-                <input class="form-control send-message-author" id="send-message-author-input" placeholder="Введите имя" />
+                <input class="form-control send-message-author" id="send-message-author-input" placeholder="Введите имя"/>
             </div>
         </div>
         <div class="row">

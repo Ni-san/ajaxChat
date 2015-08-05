@@ -1,7 +1,8 @@
 <?php
 namespace exceptions;
 
-class DbException extends \Exception {
+class DbException extends \Exception
+{
 
     /**
      * @param string $message
