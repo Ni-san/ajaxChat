@@ -52,7 +52,7 @@ class Controller {
         }
 
         if(isset($_POST['message'])) {
-            self::$data->addMessage($_POST['message']);
+            self::$data->addMessage($_POST['message'], $_POST['author'] ? $_POST['author'] : 'anon');
             exit;
         }
     }

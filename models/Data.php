@@ -42,12 +42,12 @@ class Data
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return array|bool
      * @throws DbException
      */
     public function getMessagesAfter($id) {
-        $result = $this->mysqli->query("SELECT * FROM test WHERE `id`>" . $id . " ORDER BY id ASC");
+        $result = $this->mysqli->query("SELECT * FROM test WHERE `id`>" . (int)$id . " ORDER BY id DESC");
         if(!$result) {
             throw new DbException('Не удалось получить новые сообщения');
         }
@@ -62,19 +62,14 @@ class Data
     }
 
     /**
-     * @param $text
+     * @param string $text
+     * @param string $author
      * @throws DbException
      */
-    public function addMessage($text) {
-        $result = $this->mysqli->query("INSERT INTO `test`(`text`) VALUES ('" . $text . "')");
+    public function addMessage($text, $author) {
+        $result = $this->mysqli->query("INSERT INTO `test`(`text`,`author`) VALUES ('" . $text . "', '" . $author . "')");
         if(!$result) {
             throw new DbException('Не удалось добавить сообщение');
         }
     }
 }
-
-/*
-$res = $mysqli->query("SELECT 'choices to please everybody.' AS _msg FROM DUAL");
-$row = $res->fetch_assoc();
-echo $row['_msg'];
-*/
